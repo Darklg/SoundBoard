@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+/* Buttons
+-------------------------- */
+
+button {
+    border: 0;
+    border-radius: 3px;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+button:focus,
+button:hover {
+    outline: 0;
+    background-color: #dedede;
+}
+
+button.current {
+    background-color: #999;
+}
