@@ -1,9 +1,13 @@
 window.addEvent('domready', function() {
-    var buttons = $$('[data-mp3]');
+    var buttons = $$('[data-mp3]'),
+        remixmode = $('remixmode');
     // Launch player
     buttons.each(function(el) {
         el.addEvent('click', function(e) {
             e.preventDefault();
+            if (!remixmode.checked) {
+                stopSounds(buttons);
+            }
             playMp3($(this));
         });
     });
@@ -38,7 +42,7 @@ var playMp3 = function(self) {
     self.addClass('current');
     var url = self.getAttribute('data-mp3');
     var audioElement = new Element('audio');
-    audioElement.addEvent('ended', function() {
+    audioElement.addEventListener('ended', function() {
         self.removeClass('current');
     });
     audioElement.addClass('audio-player');

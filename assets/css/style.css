@@ -1,11 +1,29 @@
 @charset "UTF-8";
 
+/* Body
+-------------------------- */
+
+body {
+    text-align: center;
+}
+
 /* Buttons
 -------------------------- */
 
+.buttons {
+    line-height: 36px;
+}
+
 button {
+    display: inline-block;
+    height: 28px;
+    margin: 0 3px;
+    padding: 0 10px;
     border: 0;
-    border-radius: 3px;
+    border-radius: 30px;
+    font-size: 14px;
+    line-height: 28px;
+    vertical-align: middle;
     background-color: #ccc;
     cursor: pointer;
 }
