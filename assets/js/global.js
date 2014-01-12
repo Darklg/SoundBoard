@@ -1,6 +1,7 @@
 window.addEvent('domready', function() {
     var buttons = $$('[data-mp3]'),
-        remixmode = $('remixmode');
+        remixmode = $('remixmode'),
+        frenchKeyboard = 'azertyuiopqsdfghjklmwxcvbn'.split('');
     // Launch player
     buttons.each(function(el) {
         el.addEvent('click', function(e) {
@@ -8,19 +9,27 @@ window.addEvent('domready', function() {
             clickButton($(this), buttons);
         });
     });
-    // Destroy all audio players
+    // Destroy all audio players on shut
     $('shut').addEvent('click', function(e) {
         e.preventDefault();
         stopSounds(buttons);
     });
-    // Keyboards event
-    window.addEvent('keydown', function(e) {
-        if (e.code && e.code == 27) {
-            stopSounds(buttons);
-        }
-    });
+    // Autoplay from hash
+    autoplayFromHash(buttons);
+    // Keyboard Events
+    launchKeyboardEvents(buttons, frenchKeyboard);
+});
+
+/* ----------------------------------------------------------
+  Functions
+---------------------------------------------------------- */
+
+/* Autoplay from hash
+-------------------------- */
+
+var autoplayFromHash = function(buttons) {
     if (window.location.hash) {
-        var hash = window.location.hash.replace('#','');
+        var hash = window.location.hash.replace('#', '');
         buttons.each(function(el) {
             var data_mp3 = el.getAttribute('data-mp3');
             if (data_mp3 == hash) {
@@ -28,7 +37,34 @@ window.addEvent('domready', function() {
             }
         });
     }
-});
+};
+
+/* Keyboard events
+-------------------------- */
+
+var launchKeyboardEvents = function(buttons, frenchKeyboard) {
+    // Keyboards event
+    window.addEvent('keydown', function(e) {
+        if (!e.code) {
+            return;
+        }
+        // Echap : stop sound
+        if (e.code == 27) {
+            stopSounds(buttons);
+            return;
+        }
+
+        // Keyboard code
+        if (e.shift || e.meta || e.control || e.alt) {
+            return;
+        }
+        var kCode = String.fromCharCode(e.code).toLowerCase(),
+            kId = frenchKeyboard.indexOf(kCode);
+        if ((kId || kId === 0) && buttons[kId]) {
+            clickButton(buttons[kId], buttons);
+        }
+    });
+};
 
 /* ----------------------------------------------------------
   Utilities
@@ -48,6 +84,12 @@ var clickButton = function(button, buttons) {
 -------------------------- */
 
 var stopSounds = function(buttons) {
+    if ("pushState" in history) {
+        history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
+    else {
+        window.location.hash = '';
+    }
     buttons.removeClass('current');
     $$('.audio-player').destroy();
 };

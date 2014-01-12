@@ -11,7 +11,7 @@ body {
 -------------------------- */
 
 .buttons {
-    line-height: 36px;
+    line-height: 96px;
 }
 
 button {
@@ -20,12 +20,24 @@ button {
     margin: 0 3px;
     padding: 0 10px;
     border: 0;
-    border-radius: 30px;
+    border-radius: 999px;
     font-size: 14px;
     line-height: 28px;
     vertical-align: middle;
     background-color: #ccc;
     cursor: pointer;
+}
+
+button[data-mp3] {
+    width: 90px;
+    height: 90px;font-size: 12px;
+    line-height: 90px;
+}
+
+button[data-mp3] span {
+    display: inline-block;
+    line-height: 1.2;
+    vertical-align: middle;
 }
 
 button:focus,

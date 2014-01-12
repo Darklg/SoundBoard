@@ -27,15 +27,30 @@ function get_mp3_list( $mp3_dir ) {
             if ( $extension != 'mp3' ) {
                 continue;
             }
-            $entry = strtolower( trim( str_replace( '.mp3', '', $entry ) ) );
-            $id = str_replace( array( ' ', '_' ), '-', $entry );
-            $name = ucwords( str_replace( '-', ' ', $id ) );
-            $mp3_list[$id] = array(
-                'file' => $entry,
-                'name' => $name,
-            );
+            $mp3_list = get_mp3_details( $entry, $mp3_dir, $mp3_list );
         }
         closedir( $handle );
     }
+    return $mp3_list;
+}
+
+
+/* ----------------------------------------------------------
+  Get MP3 details
+---------------------------------------------------------- */
+
+function get_mp3_details( $entry, $mp3_dir, $mp3_list ) {
+
+    // Get Initial ID
+    $id = strtolower( trim( str_replace( '.mp3', '', $entry ) ) );
+    $id = str_replace( array( ' ', '_' ), '-', $id );
+
+    // Get Initial name
+    $name = ucwords( str_replace( '-', ' ', $id ) );
+
+    $mp3_list[$id] = array(
+        'file' => $entry,
+        'name' => $name,
+    );
     return $mp3_list;
 }

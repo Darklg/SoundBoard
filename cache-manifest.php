@@ -2,7 +2,7 @@
 $base_dir = dirname( __FILE__ ) . '/';
 include $base_dir . 'inc/main.php';
 
-$version = md5( "0.3".serialize( $mp3_list ) );
+$version = md5( "0.4".serialize( $mp3_list ) );
 
 header( "Cache-Control: max-age=0, no-cache, no-store, must-revalidate" );
 header( "Pragma: no-cache" );
