@@ -1,7 +1,8 @@
 <div class="buttons">
 <?php
-foreach ( $mp3_list as $mp3 ) {
-    echo '<button data-mp3="'.$mp3_path.$mp3['file'].'">'.$mp3['name'].'</button>';
+$mp3_list = get_mp3_list( $mp3_dir );
+foreach ( $mp3_list as $id => $mp3 ) {
+    echo '<button id="button_'.$id.'" data-mp3="'.$mp3_path.$mp3['file'].'">'.$mp3['name'].'</button>';
 }
 ?>
 </div>
