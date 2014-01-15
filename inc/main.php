@@ -30,6 +30,7 @@ function get_mp3_list( $mp3_dir ) {
             $mp3_list = get_mp3_details( $entry, $mp3_dir, $mp3_list );
         }
         closedir( $handle );
+        ksort($mp3_list);
     }
     return $mp3_list;
 }

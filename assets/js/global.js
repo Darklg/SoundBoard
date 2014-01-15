@@ -1,21 +1,26 @@
 window.addEvent('domready', function() {
     var buttons = $$('[data-mp3]'),
         remixmode = $('remixmode'),
-        frenchKeyboard = 'azertyuiopqsdfghjklmwxcvbn'.split('');
+        frenchKeyboard = 'azertyuiopqsdfghjklmwxcvbn'.split(''),
+        mainEvent = (('ontouchend' in window)) ? 'touchend' : 'click';
+
     // Launch player
     buttons.each(function(el) {
-        el.addEvent('click', function(e) {
+        el.addEvent(mainEvent, function(e) {
             e.preventDefault();
             clickButton($(this), buttons);
         });
     });
+
     // Destroy all audio players on shut
-    $('shut').addEvent('click', function(e) {
+    $('shut').addEvent(mainEvent, function(e) {
         e.preventDefault();
         stopSounds(buttons);
     });
+
     // Autoplay from hash
     autoplayFromHash(buttons);
+
     // Keyboard Events
     launchKeyboardEvents(buttons, frenchKeyboard);
 });

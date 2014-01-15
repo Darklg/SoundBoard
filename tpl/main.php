@@ -6,7 +6,8 @@ foreach ( $mp3_list as $id => $mp3 ) {
 }
 ?>
 </div>
-<p>
-    <button id="shut">&cross;</button>
-    <label><input type="checkbox" id="remixmode" /> Remix mode</label>
-</p>
+<div class="toolbar">
+    <a class="fork" href="https://github.com/Darklg/SoundBoard" target="_blank">Fork me on Github</a>
+    <button id="shut">&#9785; Stop</button>
+    <label><input type="checkbox" id="remixmode" /> No limit</label>
+</div>

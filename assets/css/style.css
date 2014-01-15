@@ -4,13 +4,50 @@
 -------------------------- */
 
 body {
+    margin: 0;
+    padding: 0 0 40px;
     text-align: center;
+    font: 12px sans-serif;
+}
+
+h1 {
+    height: 40px;
+    margin: 0;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.2);
+    line-height: 40px;
+    background-color: #f0f0f0;
+}
+
+/* Toolbar
+-------------------------- */
+
+.toolbar {
+    z-index: 1;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 30px;
+    padding: 10px;
+    text-align: left;
+    line-height: 30px;
+    background-color: #f0f0f0;
+}
+
+.toolbar .fork {
+    float: right;
+    color: #676767;
+}
+
+.toolbar .fork:hover {
+    text-decoration: none;
 }
 
 /* Buttons
 -------------------------- */
 
 .buttons {
+    padding: 6px;
     line-height: 96px;
 }
 
@@ -23,15 +60,27 @@ button {
     border-radius: 999px;
     font-size: 14px;
     line-height: 28px;
-    vertical-align: middle;
+    vertical-align: 0;
     background-color: #ccc;
     cursor: pointer;
 }
 
 button[data-mp3] {
     width: 90px;
-    height: 90px;font-size: 12px;
+    height: 90px;
+    font-size: 12px;
     line-height: 90px;
+}
+
+@media(min-width:720px) {
+    .buttons {
+        padding: 20px 100px;
+        line-height: 110px;
+    }
+
+    button[data-mp3] {
+        margin: 0 10px;
+    }
 }
 
 button[data-mp3] span {
