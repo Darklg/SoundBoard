@@ -23,6 +23,9 @@ window.addEvent('domready', function() {
 
     // Keyboard Events
     launchKeyboardEvents(buttons, frenchKeyboard);
+
+    // Scroll top
+    $(window).scrollTo(0, 0);
 });
 
 /* ----------------------------------------------------------

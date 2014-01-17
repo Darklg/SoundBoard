@@ -5,33 +5,42 @@
 
 body {
     margin: 0;
-    padding: 0 0 40px;
+    padding: 40px 0 45px;
     text-align: center;
     font: 12px sans-serif;
 }
 
-h1 {
-    height: 40px;
-    margin: 0;
-    text-shadow: 1px 1px 0 rgba(255,255,255,0.2);
-    line-height: 40px;
-    background-color: #f0f0f0;
-}
-
-/* Toolbar
+/* Bars
 -------------------------- */
 
+h1,
 .toolbar {
     z-index: 1;
     position: fixed;
     right: 0;
-    bottom: 0;
     left: 0;
+    margin: 0;
+    background-color: #f0f0f0;
+    box-shadow: 0 0 3px rgba(0,0,0,.2);
+}
+
+/* Title */
+
+h1 {
+    top: 0;
+    height: 40px;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.2);
+    line-height: 40px;
+}
+
+/* Toolbar */
+
+.toolbar {
+    bottom: 0;
     height: 30px;
     padding: 10px;
     text-align: left;
     line-height: 30px;
-    background-color: #f0f0f0;
 }
 
 .toolbar .fork {

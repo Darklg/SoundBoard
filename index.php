@@ -1,5 +1,6 @@
 <?php
 $base_dir = dirname( __FILE__ ) . '/';
+$script_version = "0.6";
 include $base_dir . 'inc/main.php';
 
 /* ----------------------------------------------------------
