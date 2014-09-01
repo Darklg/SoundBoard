@@ -24,7 +24,8 @@ function get_mp3_list( $mp3_dir ) {
             if ( in_array( $entry, array( '.', '..' ) ) ) {
                 continue;
             }
-            $extension =  array_pop( explode( '.', $entry ) );
+            $file_details = explode( '.', $entry );
+            $extension =  array_pop( $file_details );
             if ( $extension != 'mp3' ) {
                 continue;
             }
