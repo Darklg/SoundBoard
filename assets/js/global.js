@@ -2,12 +2,17 @@ window.addEvent('domready', function() {
     var buttons = $$('[data-mp3]'),
         remixmode = $('remixmode'),
         frenchKeyboard = 'azertyuiopqsdfghjklmwxcvbn'.split(''),
-        mainEvent = (('ontouchend' in window)) ? 'touchend' : 'click';
+        mainEvent = (('ontouchend' in window)) ? 'tap' : 'click';
 
     // Launch player
     buttons.each(function(el) {
+        if (mainEvent == 'tap') {
+            setTapEvent(el);
+        }
         el.addEvent(mainEvent, function(e) {
-            e.preventDefault();
+            if (e) {
+                e.preventDefault();
+            }
             clickButton($(this), buttons);
         });
     });
@@ -31,6 +36,36 @@ window.addEvent('domready', function() {
 /* ----------------------------------------------------------
   Functions
 ---------------------------------------------------------- */
+
+/* Tap event
+-------------------------- */
+
+var setTapEvent = function(el) {
+    var duration = 300,
+        timerStart, timerEnd;
+
+    function startTimer() {
+        timerStart = new Date().getTime();
+    }
+
+    function endTimer() {
+        timerEnd = new Date().getTime();
+        if (timerEnd - timerStart < duration) {
+            el.fireEvent('tap');
+        }
+    }
+
+    if (window.navigator.msPointerEnabled) {
+        el.style.touchAction = "none";
+        el.style.msTouchAction = "none";
+        el.addEvent('MSPointerDown', startTimer);
+        el.addEvent('MSPointerUp', endTimer);
+    }
+    else {
+        el.addEvent('touchstart', startTimer);
+        el.addEvent('touchend', endTimer);
+    }
+};
 
 /* Autoplay from hash
 -------------------------- */
