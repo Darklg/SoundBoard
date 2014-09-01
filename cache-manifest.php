@@ -1,6 +1,7 @@
 <?php
 $base_dir = dirname( __FILE__ ) . '/';
 include $base_dir . 'inc/main.php';
+$mp3_list = get_mp3_list($mp3_dir);
 
 $version = md5( $script_version.serialize( $mp3_list ) );
 
