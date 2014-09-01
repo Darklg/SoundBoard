@@ -1,5 +1,6 @@
 window.addEvent('domready', function() {
     var buttons = $$('[data-mp3]'),
+        shutBtn = $('shut'),
         remixmode = $('remixmode'),
         frenchKeyboard = 'azertyuiopqsdfghjklmwxcvbn'.split(''),
         mainEvent = (('ontouchend' in window)) ? 'tap' : 'click';
@@ -18,7 +19,10 @@ window.addEvent('domready', function() {
     });
 
     // Destroy all audio players on shut
-    $('shut').addEvent(mainEvent, function(e) {
+    if (mainEvent == 'tap') {
+        setTapEvent(shutBtn);
+    }
+    shutBtn.addEvent(mainEvent, function(e) {
         e.preventDefault();
         stopSounds(buttons);
     });
