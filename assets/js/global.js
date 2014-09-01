@@ -23,7 +23,9 @@ window.addEvent('domready', function() {
         setTapEvent(shutBtn);
     }
     shutBtn.addEvent(mainEvent, function(e) {
-        e.preventDefault();
+        if (e) {
+            e.preventDefault();
+        }
         stopSounds(buttons);
     });
 
