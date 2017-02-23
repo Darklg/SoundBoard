@@ -2,11 +2,16 @@ window.addEvent('domready', function() {
     var buttons = $$('[data-mp3]'),
         shutBtn = $('shut'),
         remixmode = $('remixmode'),
-        frenchKeyboard = 'azertyuiopqsdfghjklmwxcvbn'.split(''),
+        frenchKeyboard = 'azertyuiopqsdfghjklmwxcvbn,;:='.split(''),
         mainEvent = (('ontouchend' in window)) ? 'tap' : 'click';
 
     // Launch player
-    buttons.each(function(el) {
+    buttons.each(function(el, i) {
+        if (frenchKeyboard[i] && mainEvent == 'click') {
+            var tmpElKey = document.createElement('b');
+            tmpElKey.innerHTML = '<br />[' + frenchKeyboard[i].toUpperCase() + ']';
+            el.firstChild.appendChild(tmpElKey);
+        }
         if (mainEvent == 'tap') {
             setTapEvent(el);
         }
