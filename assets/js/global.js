@@ -3,7 +3,6 @@
 
 window.addEvent('domready', function() {
     var buttons = $$('[data-mp3]'),
-        remixmodeBtn = $('remixmode'),
         shutBtn = $('shut'),
         frenchKeyboard = '1234567890azertyuiopqsdfghjklmwxcvbn'.split(''),
         mainEvent = (('ontouchend' in window)) ? 'tap' : 'click';
@@ -22,7 +21,7 @@ window.addEvent('domready', function() {
             if (e) {
                 e.preventDefault();
             }
-            clickButton($(this), buttons, remixmodeBtn);
+            clickButton($(this), buttons);
         });
     });
 
@@ -130,8 +129,8 @@ var launchKeyboardEvents = function(buttons, frenchKeyboard) {
 /* Click Button
 -------------------------- */
 
-var clickButton = function(button, buttons, remixmodeBtn) {
-    if (!remixmodeBtn.checked) {
+var clickButton = function(button, buttons) {
+    if (!$('remixmode').checked) {
         stopSounds(buttons);
     }
     playMp3(button);
