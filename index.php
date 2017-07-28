@@ -1,5 +1,5 @@
 <?php
-$base_dir = dirname( __FILE__ ) . '/';
+$base_dir = dirname(__FILE__) . '/';
 include $base_dir . 'inc/main.php';
 
 /* ----------------------------------------------------------

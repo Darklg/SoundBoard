@@ -73,6 +73,8 @@ button {
     line-height: 28px;
     vertical-align: 0;
     background-color: #ccc;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 

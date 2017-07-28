@@ -1,8 +1,11 @@
+/*globals $,$$ */
+'use strict';
+
 window.addEvent('domready', function() {
     var buttons = $$('[data-mp3]'),
+        remixmodeBtn = $('remixmode'),
         shutBtn = $('shut'),
-        remixmode = $('remixmode'),
-        frenchKeyboard = 'azertyuiopqsdfghjklmwxcvbn,;:='.split(''),
+        frenchKeyboard = '1234567890azertyuiopqsdfghjklmwxcvbn'.split(''),
         mainEvent = (('ontouchend' in window)) ? 'tap' : 'click';
 
     // Launch player
@@ -19,7 +22,7 @@ window.addEvent('domready', function() {
             if (e) {
                 e.preventDefault();
             }
-            clickButton($(this), buttons);
+            clickButton($(this), buttons, remixmodeBtn);
         });
     });
 
@@ -127,8 +130,8 @@ var launchKeyboardEvents = function(buttons, frenchKeyboard) {
 /* Click Button
 -------------------------- */
 
-var clickButton = function(button, buttons) {
-    if (!remixmode.checked) {
+var clickButton = function(button, buttons, remixmodeBtn) {
+    if (!remixmodeBtn.checked) {
         stopSounds(buttons);
     }
     playMp3(button);
