@@ -4,7 +4,7 @@
   Variables
 ---------------------------------------------------------- */
 
-$script_version = "0.10.0";
+$script_version = "0.10.1";
 $mp3_path = 'assets/mp3/';
 $mp3_dir = $base_dir . $mp3_path;
 $tpl_dir = $base_dir . 'tpl/';

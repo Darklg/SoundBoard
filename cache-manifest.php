@@ -18,6 +18,7 @@ echo "\nCACHE:\n";
 echo 'assets/css/style.css' . "\n";
 echo 'assets/js/mootools.js' . "\n";
 echo 'assets/js/global.js' . "\n";
+echo 'assets/images/apple-touch-icon.png' . "\n";
 
 // MP3 List
 $mp3_list = get_mp3_list($mp3_dir);

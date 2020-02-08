@@ -1,7 +1,8 @@
 @charset "UTF-8";
 
-/* Body
--------------------------- */
+/* ----------------------------------------------------------
+  Body
+---------------------------------------------------------- */
 
 body {
     margin: 0;
@@ -10,8 +11,9 @@ body {
     font: 12px sans-serif;
 }
 
-/* Bars
--------------------------- */
+/* ----------------------------------------------------------
+  Bars
+---------------------------------------------------------- */
 
 h1,
 .toolbar {
@@ -24,7 +26,8 @@ h1,
     box-shadow: 0 0 3px rgba(0,0,0,.2);
 }
 
-/* Title */
+/* Header
+-------------------------- */
 
 h1 {
     top: 0;
@@ -34,7 +37,8 @@ h1 {
     letter-spacing: -0.05em;
 }
 
-/* Toolbar */
+/* Toolbar
+-------------------------- */
 
 .toolbar {
     bottom: 0;
@@ -42,7 +46,12 @@ h1 {
     padding: 10px;
     text-align: left;
     line-height: 30px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
+
+/* Fork */
 
 .toolbar .fork {
     float: right;
@@ -53,9 +62,12 @@ h1 {
     text-decoration: none;
 }
 
+/* Shut */
+
 button#shut {
     z-index: 1;
     position: relative;
+    margin-right: 10px;
 }
 
 button#shut:before {
@@ -71,14 +83,41 @@ button#shut:before {
     cursor: pointer;
 }
 
-/* Buttons
--------------------------- */
+/* Label */
+
+.toolbar label {
+    display: inline-block;
+    line-height: 30px;
+}
+
+.toolbar label input {
+    vertical-align: middle;
+}
+
+/* Responsive */
+
+@media(max-width:768px) {
+    .toolbar {
+        padding: 15px;
+    }
+
+    button#shut:before {
+        margin: -15px -13px;
+    }
+}
+
+/* ----------------------------------------------------------
+  Buttons
+---------------------------------------------------------- */
 
 .buttons {
     z-index: 1;
     position: relative;
     padding: 6px;
     line-height: 96px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 
 button {
